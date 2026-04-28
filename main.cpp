@@ -1,14 +1,18 @@
 /*********************************************************************/
 
-/* Your name
+/* Eyu Haile
 
-/* Lab 1 Solution                           
+/* Lab 3 Solution                           
 
-/* This program does this and that
+/* This program receives a file name from the user, then, after
 
-/* (give details that would help a programmer understand
+/* reading its contents, displays them by category. The categories
 
-/* what the program does before looking at the code)               
+/* are displayed in ascending order, while the lines are stored in
+
+/* descending order. It uses a linked list to store the contents of 
+
+/* the file.
 
 /*********************************************************************/ 
 
@@ -36,33 +40,43 @@ int main()
     // Open the file
     ifstream file(fileName);
 
-    // Read the contents of the file and store them in the LinkedList
-    while(getline(file, category))
+    if(!file)
     {
-        getline(file, line);
-        list->addItem(category, line);
+        // Read the contents of the file and store them in the LinkedList
+        while(getline(file, category))
+        {
+            getline(file, line);
+            list->addItem(category, line);
+        }
+
+        // Get the contents in the LinkedList
+        items = list->toVector();
+
+        // Display the items in the LinkedList
+        cout << "Here are the contents of the file: " << endl;
+        string currentCat;
+        for(int i = 0; i < items.size(); i+=2)
+        {
+            if(currentCat != items[i])
+            {
+                currentCat = items[i];
+                cout << currentCat << endl;
+                cout << "   " << items[i + 1] << endl;
+            }
+            else 
+            {
+                cout << "   " << items[i + 1] << endl;
+            }
+        }
+    }
+    else
+    {
+        cout << "Error: File could not be opened." << endl;
     }
 
-    // Get the contents in the LinkedList
-    items = list->toVector();
-
-    // Display the items in the LinkedList
-    cout << "Here are the contents of the file: " << endl;
-    string currentCat;
-    for(int i = 0; i < items.size(); i+=2)
-    {
-        if(currentCat != items[i])
-        {
-            currentCat = items[i];
-            cout << currentCat << endl;
-            cout << "   " << items[i + 1] << endl;
-        }
-        else 
-        {
-            cout << "   " << items[i + 1] << endl;
-        }
-    }
-
+    // Get rid of list object
+    delete list;
+    list = nullptr;
 
     return 0;
 }

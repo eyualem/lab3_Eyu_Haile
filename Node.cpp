@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Node::Node() : next(nullptr)
+Node::Node() : next(nullptr), line(""), category("")
 {
 
 }

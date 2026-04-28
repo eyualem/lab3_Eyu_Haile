@@ -16,7 +16,8 @@ class LinkedList
 
     public:
         LinkedList();
-        LinkedList(LinkedList*);
+        LinkedList(const LinkedList&list);
+        ~LinkedList();
         int getLength();
         void addItem(string, string);
         vector<string> toVector();

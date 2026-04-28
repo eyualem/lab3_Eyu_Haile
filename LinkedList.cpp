@@ -10,15 +10,15 @@ LinkedList::LinkedList() : headPtr(nullptr), numItems(0)
 
 }
 
-LinkedList::LinkedList(LinkedList* list)
+LinkedList::LinkedList(const LinkedList& list) 
 {
-    if(list->headPtr != nullptr)
+    if(list.headPtr != nullptr)
     {
         // Set number of items and headPtr fields
-        numItems = list->numItems;
+        numItems = list.numItems;
 
         // Point origList to the original linked list's first node
-        Node* origList = list->headPtr;
+        Node* origList = list.headPtr;
 
         // Create a node used to the copy original linked list
         Node* newList = new Node();
@@ -200,7 +200,7 @@ void LinkedList::addItem(string category, string line)
 
 vector<string> LinkedList::toVector()
 {
-    Node* current = headPtr;;   // To access the current node
+    Node* current = headPtr;    // To access the current node
     vector<string> items;       // To store categories and lines in
                                 // the linked list
 
@@ -214,4 +214,24 @@ vector<string> LinkedList::toVector()
     }
 
     return items;
+}
+
+LinkedList::~LinkedList()
+{
+    Node* current = headPtr;;   // To access the current node
+    vector<string> items;       // To store categories and lines in
+                                // the linked list
+    
+    while(current != nullptr)
+    {
+        // Store the next node in a temporary node
+        Node* nextNode = current->getNext();
+
+        // Delete the current node and set it to the next one
+        delete current;
+        current = nextNode;
+
+        // Set temporary node to nullptr
+        nextNode = nullptr;
+    }
 }
