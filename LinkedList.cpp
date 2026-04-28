@@ -7,7 +7,7 @@ using namespace std;
 
 /******************************************************
  * LinkedList()
- * Initializes the fields od the linked list object
+ * Initializes the fields of the linked list object
  * to their initial values.
  * 
  * Parameters:
@@ -21,7 +21,7 @@ LinkedList::LinkedList() : headPtr(nullptr), numItems(0)
 }
 
 /******************************************************
- * LinkedList(LinkedList& list)
+ * LinkedList(const LinkedList& list)
  * Deep copies the contents of another linked list
  * into the current linked list object.
  * 
@@ -94,6 +94,15 @@ int LinkedList::getLength()
     return numItems;
 }
 
+/******************************************************
+ * convertToUpper(string str)
+ * Converts all characters in a string to uppercase.
+ * 
+ * Parameters:
+ *   string str: the string to convert
+ * 
+ * Returns: the converted uppercase string
+ ******************************************************/
 string LinkedList::convertToUpper(string str) 
 {
     for (char &c : str) 
@@ -103,6 +112,19 @@ string LinkedList::convertToUpper(string str)
     return str;
 }
 
+/******************************************************
+ * findIndexToAdd(string catToAdd, string lineToAdd)
+ * Finds the correct index position to insert a new 
+ * node so that categories are in ascending alphabetical 
+ * order and lines within each category are in descending 
+ * alphabetical order.
+ * 
+ * Parameters:
+ *   string catToAdd:  the category of the new node
+ *   string lineToAdd: the line of text of the new node
+ * 
+ * Returns: the index at which the new node should be inserted
+ ******************************************************/
 int LinkedList::findIndexToAdd(string catToAdd, string lineToAdd)
 {
     Node* current = headPtr;    // To point to the current node
@@ -185,8 +207,6 @@ int LinkedList::findIndexToAdd(string catToAdd, string lineToAdd)
  ******************************************************/
 void LinkedList::addItem(string category, string line)
 {
-    bool success = false;    // To know if adding the item was successfull
-
     // For a case when the list is empty
     if(numItems == 0)
     {
@@ -275,9 +295,7 @@ vector<string> LinkedList::toVector()
  ******************************************************/
 LinkedList::~LinkedList()
 {
-    Node* current = headPtr;;   // To access the current node
-    vector<string> items;       // To store categories and lines in
-                                // the linked list
+    Node* current = headPtr;   // To access the current node
     
     while(current != nullptr)
     {

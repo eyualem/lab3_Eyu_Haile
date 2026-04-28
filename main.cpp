@@ -1,20 +1,14 @@
-/*********************************************************************/
-
-/* Eyu Haile
-
-/* Lab 3 Solution                           
-
-/* This program receives a file name from the user, then, after
-
-/* reading its contents, displays them by category. The categories
-
-/* are displayed in ascending order, while the lines are stored in
-
-/* descending order. It uses a linked list to store the contents of 
-
-/* the file.
-
-/*********************************************************************/ 
+/*********************************************************************
+ * Eyu Haile
+ * 
+ * Lab 3 Solution                           
+ *
+ * This program receives a file name from the user, then, after
+ * reading its contents, displays them by category. The categories
+ * are displayed in ascending order, while the lines are stored in
+ * descending order. It uses a linked list to store the contents of 
+ * the file.
+ *********************************************************************/
 
 #include <iostream>
 #include <fstream>
@@ -40,7 +34,7 @@ int main()
     // Open the file
     ifstream file(fileName);
 
-    if(!file)
+    if(file)
     {
         // Read the contents of the file and store them in the LinkedList
         while(getline(file, category))
@@ -49,6 +43,9 @@ int main()
             list->addItem(category, line);
         }
 
+        // Close the file 
+        file.close();
+        
         // Get the contents in the LinkedList
         items = list->toVector();
 
