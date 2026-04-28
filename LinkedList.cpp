@@ -169,7 +169,8 @@ void LinkedList::addItem(string category, string line)
         {
             // Add the new node
             newNode->setNext(headPtr);
-            headPtr->setNext(newNode);
+            headPtr = newNode;
+            numItems++;
         }
         else
         {
