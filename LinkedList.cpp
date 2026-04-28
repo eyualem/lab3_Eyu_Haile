@@ -12,11 +12,11 @@ LinkedList::LinkedList() : headPtr(nullptr), numItems(0)
 
 LinkedList::LinkedList(LinkedList* list)
 {
-    // Set number of items and headPtr fields
-    numItems = list->numItems;
-
     if(list->headPtr != nullptr)
     {
+        // Set number of items and headPtr fields
+        numItems = list->numItems;
+
         // Point origList to the original linked list's first node
         Node* origList = list->headPtr;
 

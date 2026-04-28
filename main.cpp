@@ -1,3 +1,17 @@
+/*********************************************************************/
+
+/* Your name
+
+/* Lab 1 Solution                           
+
+/* This program does this and that
+
+/* (give details that would help a programmer understand
+
+/* what the program does before looking at the code)               
+
+/*********************************************************************/ 
+
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -15,6 +29,7 @@ int main()
     
     // Ask the user for the file name
     cout << "What is the name of the file whose contents you want displayed? " << endl;
+    cout << "(Make sure to include the file extension)" << endl;
     cin >> fileName;
     cout << endl;
 
@@ -33,9 +48,19 @@ int main()
 
     // Display the items in the LinkedList
     cout << "Here are the contents of the file: " << endl;
-    for(int i = 0; i < items.size(); i++)
+    string currentCat;
+    for(int i = 0; i < items.size(); i+=2)
     {
-        cout << items[i] << endl;
+        if(currentCat != items[i])
+        {
+            currentCat = items[i];
+            cout << currentCat << endl;
+            cout << "   " << items[i + 1] << endl;
+        }
+        else 
+        {
+            cout << "   " << items[i + 1] << endl;
+        }
     }
 
 
