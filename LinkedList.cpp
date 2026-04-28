@@ -195,5 +195,28 @@ void LinkedList::addItem(string category, string line)
 
 vector<string> LinkedList::toVector()
 {
-    
+    Node* current;          // To access the current node
+    vector<string> items;   // To store categories and lines in
+                            // the linked list
+
+    for(int i = 0; i < numItems; i++)
+    {
+        if(i == 0)
+        {
+            // Add first category and line into list
+            current = headPtr;
+            items.push_back(current->getCategory());
+            items.push_back(current->getLine());
+            current = current->getNext();
+        }
+        else
+        {
+            // Add current category and line into list
+            items.push_back(current->getCategory());
+            items.push_back(current->getLine());
+            current = current->getNext();
+        }
+    }
+
+    return items;
 }
