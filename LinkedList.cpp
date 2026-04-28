@@ -65,7 +65,7 @@ int LinkedList::getLength()
     return numItems;
 }
 
-string convertToUpper(string str)
+string LinkedList::convertToUpper(string str) 
 {
     for (char &c : str) 
     {
@@ -104,8 +104,12 @@ int LinkedList::findIndexToAdd(string catToAdd, string lineToAdd)
 
     // Define currentCat to make sure the program
     // stays within the same category
-    string currentCat = current->getCategory();
-    currentCat = convertToUpper(currentCat); 
+    string currentCat;
+    if(current != nullptr)
+    {
+        currentCat = current->getCategory();
+        currentCat = convertToUpper(currentCat); 
+    }
     
     // Find the correct line position       
     while(current != nullptr 
@@ -196,27 +200,17 @@ void LinkedList::addItem(string category, string line)
 
 vector<string> LinkedList::toVector()
 {
-    Node* current;          // To access the current node
-    vector<string> items;   // To store categories and lines in
-                            // the linked list
+    Node* current = headPtr;;   // To access the current node
+    vector<string> items;       // To store categories and lines in
+                                // the linked list
 
-    for(int i = 0; i < numItems; i++)
+    while(current != nullptr)
     {
-        if(i == 0)
-        {
-            // Add first category and line into list
-            current = headPtr;
-            items.push_back(current->getCategory());
-            items.push_back(current->getLine());
-            current = current->getNext();
-        }
-        else
-        {
-            // Add current category and line into list
-            items.push_back(current->getCategory());
-            items.push_back(current->getLine());
-            current = current->getNext();
-        }
+        // Add current category and line into list
+        items.push_back(current->getCategory());
+        items.push_back(current->getLine());
+        current = current->getNext();
+        
     }
 
     return items;

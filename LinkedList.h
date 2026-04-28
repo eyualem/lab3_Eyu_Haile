@@ -12,7 +12,7 @@ class LinkedList
         Node* headPtr;
         int numItems;
         int findIndexToAdd(string, string);
-        string convertToUpper(string &str);
+        string convertToUpper(string str);
 
     public:
         LinkedList();
