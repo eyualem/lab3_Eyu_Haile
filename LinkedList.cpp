@@ -5,11 +5,31 @@
 
 using namespace std;
 
+/******************************************************
+ * LinkedList()
+ * Initializes the fields od the linked list object
+ * to their initial values.
+ * 
+ * Parameters:
+ *   None
+ * 
+ * Returns: nothing
+ ******************************************************/
 LinkedList::LinkedList() : headPtr(nullptr), numItems(0)
 {
 
 }
 
+/******************************************************
+ * LinkedList(LinkedList& list)
+ * Deep copies the contents of another linked list
+ * into the current linked list object.
+ * 
+ * Parameters:
+ *   LinkedList& list: the linked list to be copied
+ * 
+ * Returns: nothing
+ ******************************************************/
 LinkedList::LinkedList(const LinkedList& list) 
 {
     if(list.headPtr != nullptr)
@@ -60,6 +80,15 @@ LinkedList::LinkedList(const LinkedList& list)
     }
 }
 
+/******************************************************
+ * getLength()
+ * Returns the number of items in the linked list.
+ * 
+ * Parameters:
+ *   None
+ * 
+ * Returns: the number of items in the linked list
+ ******************************************************/
 int LinkedList::getLength()
 {
     return numItems;
@@ -144,6 +173,16 @@ int LinkedList::findIndexToAdd(string catToAdd, string lineToAdd)
     return index;
 }
 
+/******************************************************
+ * addItem(string category, string line)
+ * Adds an item to the linked list in the correct position.
+ * 
+ * Parameters:
+ *   string category: the category of the item
+ *   string line: the line of text to add
+ * 
+ * Returns: nothing
+ ******************************************************/
 void LinkedList::addItem(string category, string line)
 {
     bool success = false;    // To know if adding the item was successfull
@@ -198,6 +237,15 @@ void LinkedList::addItem(string category, string line)
 
 }
 
+/******************************************************
+ * toVector()
+ * Converts the linked list to a vector of strings.
+ * 
+ * Parameters:
+ *   None
+ * 
+ * Returns: a vector containing the categories and lines in the linked list
+ ******************************************************/
 vector<string> LinkedList::toVector()
 {
     Node* current = headPtr;    // To access the current node
@@ -216,6 +264,15 @@ vector<string> LinkedList::toVector()
     return items;
 }
 
+/******************************************************
+ * ~LinkedList()
+ * Destructor for the linked list.
+ * 
+ * Parameters:
+ *   None
+ * 
+ * Returns: nothing
+ ******************************************************/
 LinkedList::~LinkedList()
 {
     Node* current = headPtr;;   // To access the current node
